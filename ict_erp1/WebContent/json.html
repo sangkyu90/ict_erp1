@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>메뉴번호</th>
+				<th>메뉴이름</th>
+				<th>메뉴설명</th>
+				
+				
+			</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+	<button type="button" id="btn">제이슨 테스트</button>
+	<script>
+		document.querySelector('#btn').onclick = function() {
+			var req = new XMLHttpRequest();
+			req.onreadystatechange = function() {
+				if (req.readyState == req.DONE) {
+					alert('어떤 데이터 전송완료');
+					alert(req.status);
+					if (req.status == 200) {
+						alert(req.responseText);
+						var obj = JSON.parse(req.responseText);
+						console.log(obj);
+						var html = '';
+						for (var i = 0; i < obj.length; i++) {
+							html += '<tr>';
+							html += '<td>' + obj[i].meiNum + '</td>';
+							html += '<td>' + obj[i].meiName + '</td>';
+							html += '<td>' + obj[i].meiPrice + '</td>';
+							html += '<tr>';
+						}
+						document.querySelector('#tbody').innerHTML = html;
+					//	console.log(req.responseText);
+					} else {
+					}
+				}
+			}
+			var param = {name : '홍길동',age : '33',address : 'cheonan'};
+			console.log(param);
+			param = encodeURIComponent(JSON.stringify(param)); //유니코드로 변환 객체를 스트링으로 변환
+			//encodeURIComponent 안하면 ":" 기호 특수문자로 판단하여 읽어들이지 않음
+			//console.log(param);
+			req.open('POST', '/json/list');
+			req.send();
+	}
+	</script>
+</body>
+</html>

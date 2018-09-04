@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+이름 : <input type="text" id="name"><br>
+나이 : <input type="text" id="age"><br>
+<div id="btns">
+	<button>메모리 저장</button>
+	<button>메모리 보기</button>
+</div>
+<table border="1">
+	<thead>
+		<tr>
+			<th><input type="checkbox" id="allChk"></th>
+			<th>이름</th>
+			<th>나이</th>
+		</tr>
+	</thead>
+	<tbody id="rTbody">
+	</tbody>
+</table>
+<button>삭제</button>
+<script>
+	var btns = document.querySelectorAll('button');
+	var persons = [];
+	btns[0].onclick = function(){
+		var name = document.querySelector('#name').value;
+		var age = document.querySelector('#age').value;
+		persons[persons.length] = {name:name,age:age};
+	}
+	
+	btns[1].onclick = function(){
+		makeTbody();
+	}
+	btns[2].onclick = function(){
+		var chks = document.querySelectorAll('input[name=delChk]:checked');
+		var cnt = 0;
+		for(var i=0;i<chks.length;i++){
+			var idx = chks[i].value;
+			idx -= cnt;
+			persons.splice(idx,1);
+			cnt++;
+		}
+		makeTbody();
+	}
+	function makeTbody(){
+		var html='';
+		for(var i=0;i<persons.length;i++){
+			var p = persons[i];
+			html += '<tr>';
+			html += '<th><input type="checkbox" name="delChk" value="' + i + '"></th>';
+			html += '<td>' + p.name +'</td>';
+			html += '<td>' + p.age +'</td>';
+			html += '</tr>';
+		}
+		document.querySelector('#rTbody').innerHTML = html;
+		document.querySelector('#allChk').onclick = function(){
+			var chks = document.querySelectorAll('input[name=delChk]');
+			for(var i=0;i<chks.length;i++){
+				chks[i].checked = this.checked;
+			}
+		}
+	}
+	function deletePerson(idx){
+		persons.splice(idx,1);
+		makeTbody();
+	}
+</script>
+</body>
+</html>

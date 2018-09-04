@@ -1,0 +1,12 @@
+[2018-08-31 13:49:44,600] INFO (AuthFilter.java:39):/level/levelList
+[2018-08-31 13:49:44,607] WARN (AuthFilter.java:41):/level/levelList
+[2018-08-31 13:49:44,608]ERROR (AuthFilter.java:43):/level/levelList
+[2018-08-31 13:49:44,608]FATAL (AuthFilter.java:45):/level/levelList
+[2018-08-31 16:46:04,880] INFO (AuthFilter.java:39):/depart/departList
+[2018-08-31 16:46:04,881] WARN (AuthFilter.java:41):/depart/departList
+[2018-08-31 16:46:04,881]ERROR (AuthFilter.java:43):/depart/departList
+[2018-08-31 16:46:04,881]FATAL (AuthFilter.java:45):/depart/departList
+[2018-08-31 16:46:12,230] INFO (AuthFilter.java:39):/views/depart/departInsert
+[2018-08-31 16:46:12,230] WARN (AuthFilter.java:41):/views/depart/departInsert
+[2018-08-31 16:46:12,230]ERROR (AuthFilter.java:43):/views/depart/departInsert
+[2018-08-31 16:46:12,230]FATAL (AuthFilter.java:45):/views/depart/departInsert
